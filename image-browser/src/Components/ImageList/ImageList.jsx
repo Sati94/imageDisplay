@@ -4,8 +4,6 @@ import data from "../Asserts/data.json"
 import img from "../Asserts/Images/img.png"
 
 
-
-
 const ImageList = () => {
     /* itt lehet egy API lekérés 
     const [data, setData] = useState([]);
@@ -26,10 +24,15 @@ const ImageList = () => {
         }, []);
     */
     const [filter, setFilter] = useState({
-        category: "default",
+        category: "search",
         query: ""
     })
-
+    const handleCategoryChange = (category) => {
+        setFilter((prevFilter) => ({
+            ...prevFilter,
+            category: category
+        }));
+    };
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setFilter((prevFilter) => ({
@@ -42,6 +45,7 @@ const ImageList = () => {
         const date = new Date(dateString);
         return date.toLocaleDateString(); // A toLocaleDateString() metódus az aktuális locale alapján formázza a dátumot
     };
+
 
 
     const filteredImages = data.response.docs.filter((image) => {
@@ -62,17 +66,47 @@ const ImageList = () => {
     return (
         <div>
             <div className="search-container">
-                <select name="category" value={filter.category} onChange={handleInputChange}>
-                    <option value="default">Search Description</option>
-                    <option value="prefix">Prefix</option>
-                    <option value="type">Type</option>
-                    <option value="format">Format</option>
-                    <option value="date">Date</option>
-                </select>
+                <div className="button-group">
+                    <button
+                        className={filter.category === "search" ? "active" : ""}
+                        onClick={() => handleCategoryChange("default")}
+
+                    >
+                        Search Description
+                    </button>
+                    <button
+                        className={filter.category === "prefix" ? "active" : ""}
+                        onClick={() => handleCategoryChange("prefix")}
+
+                    >
+                        Prefix
+                    </button>
+                    <button
+                        className={filter.category === "type" ? "active" : ""}
+                        onClick={() => handleCategoryChange("type")}
+
+                    >
+                        Type
+                    </button>
+                    <button
+                        className={filter.category === "format" ? "active" : ""}
+                        onClick={() => handleCategoryChange("format")}
+
+                    >
+                        Format
+                    </button>
+                    <button
+                        className={filter.category === "date" ? "active" : ""}
+                        onClick={() => handleCategoryChange("date")}
+
+                    >
+                        Date
+                    </button>
+                </div>
                 <input
                     type={filter.category === "date" ? "date" : "text"}
                     name="query"
-                    placeholder="Search"
+                    placeholder={filter.category.charAt(0).toUpperCase() + filter.category.slice(1)}
                     value={filter.query}
                     onChange={handleInputChange}
                 />
@@ -98,7 +132,7 @@ const ImageList = () => {
                     </div>
                 ))}
             </div>
-        </div>
+        </div >
     );
 }
 

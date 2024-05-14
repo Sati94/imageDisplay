@@ -1,21 +1,35 @@
 .search-container {
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    padding: 16px;
-    margin-bottom: 16px;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
-.search-container select,
-.search-container input {
-    padding: 8px;
-    font-size: 1em;
+.button-group button {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button-group button:hover {
+    background-color: #0056b3;
+}
+
+.button-group button.active {
+    background-color: #004080;
+    /* Sötétebb szín az aktív állapotban */
+}
+
+input[type="text"],
+input[type="date"] {
+    padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.search-container select {
-    margin-bottom: 8px;
+    border-radius: 5px;
+    width: 200px;
 }
 
 /* Kártya stílusok */
