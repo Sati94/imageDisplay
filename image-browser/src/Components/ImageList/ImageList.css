@@ -5,6 +5,12 @@
     margin-bottom: 20px;
 }
 
+.button-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
 .button-group button {
     padding: 10px 20px;
     background-color: #007BFF;
@@ -12,16 +18,16 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
 }
 
 .button-group button:hover {
     background-color: #0056b3;
 }
 
-.button-group button.active {
+.button-group button.active,
+.button-group button.active:hover {
     background-color: #004080;
-    /* Sötétebb szín az aktív állapotban */
+    /* Sötétebb szín az aktív állapotban és hover hatásnál */
 }
 
 input[type="text"],

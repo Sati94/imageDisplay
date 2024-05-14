@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./ImageList.css"
 import data from "../Asserts/data.json"
 import img from "../Asserts/Images/img.png"
+import { Link } from 'react-router-dom'
 
 
 const ImageList = () => {
@@ -72,7 +73,7 @@ const ImageList = () => {
                         onClick={() => handleCategoryChange("default")}
 
                     >
-                        Search Description
+                        Search
                     </button>
                     <button
                         className={filter.category === "prefix" ? "active" : ""}
@@ -114,12 +115,15 @@ const ImageList = () => {
             <div className="card-container">
                 {filteredImages.map((image) => (
                     <div className="card" key={image.id}>
+
                         <div className="card-image-container">
-                            <img
-                                src={img}
-                                alt={image.description_str}
-                                className="card-image"
-                            />
+                            <Link to={`/image/${image.id}`}>
+                                <img
+                                    src={img}
+                                    alt={image.description_str}
+                                    className="card-image"
+                                />
+                            </Link>
                         </div>
                         <div className="card-content">
                             <h3>{image.description_str}</h3>
