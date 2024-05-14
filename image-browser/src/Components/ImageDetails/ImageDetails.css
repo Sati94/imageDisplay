@@ -55,6 +55,7 @@ textarea {
 .save-button,
 .delete-button {
     margin-right: 10px;
+    margin-top: 10px;
     padding: 10px 20px;
     border: none;
     border-radius: 4px;
@@ -77,4 +78,15 @@ textarea {
 
 .delete-button:hover {
     background-color: #c82333;
+}
+
+.public-data input[type="text"],
+.public-data textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
 }
