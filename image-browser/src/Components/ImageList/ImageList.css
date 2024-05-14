@@ -1,30 +1,87 @@
-* {
-    margin: 10px
+.search-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 16px;
+    margin-bottom: 16px;
 }
 
-
-.table-container {
-
-    text-align: center;
+.search-container select,
+.search-container input {
+    padding: 8px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
-.table {
-    background-color: #382887;
-    margin-left: auto;
-    margin-right: auto;
+.search-container select {
+    margin-bottom: 8px;
 }
 
-/* A tábla elnevezéseinek színe sötétkék */
-.table-thead {
-    color: white;
+/* Kártya stílusok */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    padding: 16px;
 }
 
-/* A tábla szövege fehér legyen */
-.table-tbody {
-    background-color: #0278BD;
-    color: white;
+.card {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 300px;
+    width: 100%;
+    overflow: hidden;
 }
 
-.table-tbody img {
-    max-width: 100px;
+.card-image-container {
+    overflow: hidden;
+    /* Ezzel biztosítjuk, hogy a kép ne lógjon ki a kártya keretéből */
+}
+
+.card-image {
+    width: 100%;
+    height: auto;
+    transition: transform 0.2s;
+}
+
+.card-image-container:hover .card-image {
+    transform: scale(1.25);
+    /* A kép 25%-kal nagyobb lesz */
+}
+
+.card-content {
+    padding: 16px;
+}
+
+.card-content h3 {
+    margin: 0 0 8px;
+    font-size: 1.2em;
+    color: #007bff;
+}
+
+.card-content p {
+    margin: 4px 0;
+    color: #333;
+}
+
+.card-content p strong {
+    color: #555;
+}
+
+/* Nagyobb kijelzők esetén történő elrendezés */
+@media (min-width: 768px) {
+    .card {
+        max-width: 45%;
+        /* A kártyák méretének beállítása nagyobb képernyőkön */
+    }
+}
+
+@media (min-width: 1024px) {
+    .card {
+        max-width: 30%;
+        /* A kártyák méretének beállítása még nagyobb képernyőkön */
+    }
 }
