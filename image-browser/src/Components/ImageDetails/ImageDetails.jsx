@@ -37,9 +37,10 @@ const ImageDetails = () => {
         navigate('/');
     };
 
+    //itt van a post request, ami frissíti az adatokat
     const handleSave = async () => {
         try {
-            const response = await fetch('API__SAVE_ENDPOINT', {
+            const response = await fetch(`API__SAVE_ENDPOINT/${image.id}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -56,9 +57,11 @@ const ImageDetails = () => {
         }
         catch (error) {
             console.error('Error saving data:', error);
-            alert('Failed to save data');
+            alert('Failed to save data');// helyett a throw 404 jobb megoldás
         }
     }
+
+    //itt van a delete fetch, ami törli az adott id-t
     const handleDelete = async () => {
         try {
             const response = await fetch(`API_DELETE_ENDPOINT/${image.id}`, {
@@ -73,7 +76,7 @@ const ImageDetails = () => {
             }, 2000); //Visszavisz a '/' oldalra 2 másodperc múlva
         } catch (error) {
             console.error('Error deleting data:', error);
-            alert('Failed to delete data');
+            alert('Failed to delete data');// helyett a throw 404 jobb megoldás
         }
     };
 
@@ -97,53 +100,59 @@ const ImageDetails = () => {
             </div>
             <div className="public-data">
                 <h2>Publikus adatok:</h2>
-                <label><strong>Rövidített cím:</strong>
+                <div className="input-container">
+                    <label><strong>Rövidített cím:</strong></label>
                     <input
                         type="text"
                         name="shortTitle"
                         value={formData.shortTitle}
                         onChange={handleInputChange}
                     />
-                </label>
-                <label><strong>Készítés dátuma:</strong>
+                </div>
+                <div className="input-container">
+                    <label><strong>Készítés dátuma:</strong></label>
                     <input
                         type="text"
                         name="date"
                         value={formData.date}
                         onChange={handleInputChange}
                     />
-                </label>
-                <label><storng>Ország:</storng>
+                </div>
+                <div className="input-container">
+                    <label><strong>Ország:</strong></label>
                     <input
                         type="text"
                         name="country"
                         value={formData.country}
                         onChange={handleInputChange}
                     />
-                </label>
-                <label><strong>Város:</strong>
+                </div>
+                <div className="input-container">
+                    <label><strong>Város:</strong></label>
                     <input
                         type="text"
                         name="city"
                         value={formData.city}
                         onChange={handleInputChange}
                     />
-                </label>
-                <label><strong>Képszöveg:</strong>
+                </div>
+                <div className="input-container">
+                    <label><strong>Képszöveg:</strong></label>
                     <textarea
                         name="imageText"
                         value={formData.imageText}
                         onChange={handleInputChange}
                     />
-                </label>
-                <label><strong>Háttérinfó:</strong>
+                </div>
+                <div className="input-container">
+                    <label><strong>Háttérinfó:</strong></label>
                     <input
                         type="text"
                         name="backgroundInfo"
                         value={formData.backgroundInfo}
                         onChange={handleInputChange}
                     />
-                </label>
+                </div>
                 <button onClick={handleSave} className="save-button">Mentés</button>
                 <button onClick={handleDelete} className="delete-button">Törlés</button>
             </div>

@@ -70,7 +70,7 @@ const ImageList = () => {
                 <div className="button-group">
                     <button
                         className={filter.category === "search" ? "active" : ""}
-                        onClick={() => handleCategoryChange("default")}
+                        onClick={() => handleCategoryChange("search")}
 
                     >
                         Search
