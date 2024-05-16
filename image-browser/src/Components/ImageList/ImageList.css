@@ -167,12 +167,11 @@ input[type="date"] {
 }
 
 /* Nagyobb kijelzők esetén */
-@media (min-width: 900px) {
-    .card {
-        max-width: 30%;
-        /* A kártyák méretének beállítása nagyobb képernyőkön */
-    }
+.card {
+    max-width: 30%;
+    /* A kártyák méretének beállítása nagyobb képernyőkön */
 }
+
 
 @media (max-width: 500px) {
     .card-container {
