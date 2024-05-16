@@ -8,9 +8,9 @@ This project is an image search application that retrieves images from a databas
 1. Clone this repository.
 2. Navigate into the project directory.
 3. Run the following command to install dependencies:
-  npm install
-  npm install react-router-dom
-  npm install @fontsource/roboto
+   -npm install
+   -npm install react-router-dom
+   -npm install @fontsource/roboto
 4. Once the installation is complete, you can start the development server using:
   npm start
 ## Main Features
