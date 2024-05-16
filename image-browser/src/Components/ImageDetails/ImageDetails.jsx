@@ -29,9 +29,6 @@ const ImageDetails = () => {
         }));
     };
 
-    if (!image) {
-        return <div>Image not found</div>;
-    }
 
     const handleBack = () => {
         navigate('/');
@@ -82,80 +79,87 @@ const ImageDetails = () => {
 
     return (
         <div className="image-detail">
-            <button onClick={handleBack} className="back-button">Back to List</button>
-            <h2>{image.description_str}</h2>
-            <img src={img} alt={image.description_str} className="large-image" />
-            <div className="meta-data">
-                <h2>Metaadatok:</h2>
-                <p><strong>Azonosító:</strong> {image.id}</p>
-                <p><strong>Filenév:</strong> {image.filename_str[0]}</p>
-                <p><strong>Gyűjtemény:</strong> {image.coll_str[0]}</p>
-                <p><strong>Riport:</strong> {image.serialinfo_str[0]}</p>
-                <p><strong>Technikai infó:</strong> {image.bitdepth_i}-bit</p>
-                <p><strong>Eredeti képszám:</strong> {image.mid_str[0]}</p>
-                <p><strong>Master format:</strong> {image.format_str[0]}</p>
-                <p><strong>MetaDataSet:</strong> {image.prefix_str[0]}</p>
-                <p><strong>Kiadás dátuma:</strong> {new Date(image.createDate_dt).toLocaleDateString()}</p>
-                <p><strong>Utolsó módosítás:</strong> {new Date(image.harvestDate_dt).toLocaleDateString()}</p>
-            </div>
-            <div className="public-data">
-                <h2>Publikus adatok:</h2>
-                <div className="input-container">
-                    <label><strong>Rövidített cím:</strong></label>
-                    <input
-                        type="text"
-                        name="shortTitle"
-                        value={formData.shortTitle}
-                        onChange={handleInputChange}
-                    />
-                </div>
-                <div className="input-container">
-                    <label><strong>Készítés dátuma:</strong></label>
-                    <input
-                        type="text"
-                        name="date"
-                        value={formData.date}
-                        onChange={handleInputChange}
-                    />
-                </div>
-                <div className="input-container">
-                    <label><strong>Ország:</strong></label>
-                    <input
-                        type="text"
-                        name="country"
-                        value={formData.country}
-                        onChange={handleInputChange}
-                    />
-                </div>
-                <div className="input-container">
-                    <label><strong>Város:</strong></label>
-                    <input
-                        type="text"
-                        name="city"
-                        value={formData.city}
-                        onChange={handleInputChange}
-                    />
-                </div>
-                <div className="input-container">
-                    <label><strong>Képszöveg:</strong></label>
-                    <textarea
-                        name="imageText"
-                        value={formData.imageText}
-                        onChange={handleInputChange}
-                    />
-                </div>
-                <div className="input-container">
-                    <label><strong>Háttérinfó:</strong></label>
-                    <input
-                        type="text"
-                        name="backgroundInfo"
-                        value={formData.backgroundInfo}
-                        onChange={handleInputChange}
-                    />
-                </div>
-                <button onClick={handleSave} className="save-button">Mentés</button>
-                <button onClick={handleDelete} className="delete-button">Törlés</button>
-            </div>
+            {!image && (
+                <div className="no-data-message">Nincs adat</div>
+            )}
+            {image && (
+                <>
+                    <button onClick={handleBack} className="back-button">Back to List</button>
+                    <h2>{image.description_str}</h2>
+                    <img src={img} alt={image.description_str} className="large-image" />
+                    <div className="meta-data">
+                        <h2>Metaadatok:</h2>
+                        <p><strong>Azonosító:</strong> {image.id}</p>
+                        <p><strong>Filenév:</strong> {image.filename_str[0]}</p>
+                        <p><strong>Gyűjtemény:</strong> {image.coll_str[0]}</p>
+                        <p><strong>Riport:</strong> {image.serialinfo_str[0]}</p>
+                        <p><strong>Technikai infó:</strong> {image.bitdepth_i}-bit</p>
+                        <p><strong>Eredeti képszám:</strong> {image.mid_str[0]}</p>
+                        <p><strong>Master format:</strong> {image.format_str[0]}</p>
+                        <p><strong>MetaDataSet:</strong> {image.prefix_str[0]}</p>
+                        <p><strong>Kiadás dátuma:</strong> {new Date(image.createDate_dt).toLocaleDateString()}</p>
+                        <p><strong>Utolsó módosítás:</strong> {new Date(image.harvestDate_dt).toLocaleDateString()}</p>
+                    </div>
+                    <div className="public-data">
+                        <h2>Publikus adatok:</h2>
+                        <div className="input-container">
+                            <label><strong>Rövidített cím:</strong></label>
+                            <input
+                                type="text"
+                                name="shortTitle"
+                                value={formData.shortTitle}
+                                onChange={handleInputChange}
+                            />
+                        </div>
+                        <div className="input-container">
+                            <label><strong>Készítés dátuma:</strong></label>
+                            <input
+                                type="text"
+                                name="date"
+                                value={formData.date}
+                                onChange={handleInputChange}
+                            />
+                        </div>
+                        <div className="input-container">
+                            <label><strong>Ország:</strong></label>
+                            <input
+                                type="text"
+                                name="country"
+                                value={formData.country}
+                                onChange={handleInputChange}
+                            />
+                        </div>
+                        <div className="input-container">
+                            <label><strong>Város:</strong></label>
+                            <input
+                                type="text"
+                                name="city"
+                                value={formData.city}
+                                onChange={handleInputChange}
+                            />
+                        </div>
+                        <div className="input-container">
+                            <label><strong>Képszöveg:</strong></label>
+                            <textarea
+                                name="imageText"
+                                value={formData.imageText}
+                                onChange={handleInputChange}
+                            />
+                        </div>
+                        <div className="input-container">
+                            <label><strong>Háttérinfó:</strong></label>
+                            <input
+                                type="text"
+                                name="backgroundInfo"
+                                value={formData.backgroundInfo}
+                                onChange={handleInputChange}
+                            />
+                        </div>
+                        <button onClick={handleSave} className="save-button">Mentés</button>
+                        <button onClick={handleDelete} className="delete-button">Törlés</button>
+                    </div>
+                </>
+            )}
         </div>
     );
 };

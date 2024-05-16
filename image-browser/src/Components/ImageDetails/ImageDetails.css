@@ -30,7 +30,7 @@
 }
 
 .save-button {
-    margin: 10px 100px;
+    margin: 10px auto;
     min-width: 150px;
     padding: 10px 20px;
     background-color: #AAAAAA;
@@ -48,7 +48,7 @@
 }
 
 .delete-button {
-    margin: 10px 100px;
+    margin: 10px auto;
     padding: 10px 20px;
     min-width: 150px;
     background-color: #D9D9D9;
@@ -66,7 +66,7 @@
 }
 
 .meta-data {
-    background-color: rgba(20, 22, 23, 0.5);
+    background-color: rgba(20, 22, 23, 0.7);
     width: 90%;
     max-width: 90rem;
     /* Meta data background */
@@ -111,7 +111,7 @@
 
 
 .public-data {
-    background-color: rgba(20, 22, 23, 0.5);
+    background-color: rgba(20, 22, 23, 0.7);
     width: 90%;
     max-width: 90rem;
     padding: 20px;
@@ -155,14 +155,47 @@
     /* A konténer blokk-ként jelenik meg */
 }
 
-@media (min-width: 768px) {
+.no-data-message {
+    text-align: center;
+    margin-top: 32px;
+    font-size: 32px;
+    color: black;
+
+
+}
+
+@media (min-width:760px) {
     .image-detail {
         max-width: 45%;
     }
+
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 900px) {
     .image-detail {
         max-width: 100%;
+    }
+}
+
+@media (max-width: 450px) {
+
+
+    .image-detail,
+    .meta-data,
+    .public-data {
+        font-size: 16px;
+        /* Betűméret csökkentése */
+    }
+
+    .image-detail h2,
+    .meta-data h2,
+    .public-data h2 {
+        font-size: 20px;
+        /* Címek betűméretének csökkentése */
+    }
+
+    .no-data-message {
+        font-size: 24px;
+        /* Nincs adat üzenet betűméretének csökkentése */
     }
 }

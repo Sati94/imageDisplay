@@ -71,35 +71,30 @@ const ImageList = () => {
                     <button
                         className={filter.category === "search" ? "active" : ""}
                         onClick={() => handleCategoryChange("search")}
-
                     >
                         Search
                     </button>
                     <button
                         className={filter.category === "prefix" ? "active" : ""}
                         onClick={() => handleCategoryChange("prefix")}
-
                     >
                         Prefix
                     </button>
                     <button
                         className={filter.category === "type" ? "active" : ""}
                         onClick={() => handleCategoryChange("type")}
-
                     >
                         Type
                     </button>
                     <button
                         className={filter.category === "format" ? "active" : ""}
                         onClick={() => handleCategoryChange("format")}
-
                     >
                         Format
                     </button>
                     <button
                         className={filter.category === "date" ? "active" : ""}
                         onClick={() => handleCategoryChange("date")}
-
                     >
                         Date
                     </button>
@@ -112,30 +107,33 @@ const ImageList = () => {
                     onChange={handleInputChange}
                 />
             </div>
-            <div className="card-container">
-                {filteredImages.map((image) => (
-                    <div className="card" key={image.id}>
-
-                        <div className="card-image-container">
-                            <Link to={`/image/${image.id}`}>
-                                <img
-                                    src={img}
-                                    alt={image.description_str}
-                                    className="card-image"
-                                />
-                            </Link>
+            {filteredImages.length > 0 ? (
+                <div className="card-container">
+                    {filteredImages.map((image) => (
+                        <div className="card" key={image.id}>
+                            <div className="card-image-container">
+                                <Link to={`/image/${image.id}`}>
+                                    <img
+                                        src={img}
+                                        alt={image.description_str}
+                                        className="card-image"
+                                    />
+                                </Link>
+                            </div>
+                            <div className="card-content">
+                                <h3>{image.description_str}</h3>
+                                <p><strong>ID:</strong> {image.id}</p>
+                                <p><strong>Size:</strong> {`${image.ow_i}x${image.oh_i}`}</p>
+                                <p><strong>Creation Date:</strong> {formatDate(image.createDate_dt)}</p>
+                                <p><strong>Modification Date:</strong> {formatDate(image.harvestDate_dt)}</p>
+                                <p><strong>Format:</strong> {image.format_str}</p>
+                            </div>
                         </div>
-                        <div className="card-content">
-                            <h3>{image.description_str}</h3>
-                            <p><strong>ID:</strong> {image.id}</p>
-                            <p><strong>Size:</strong> {`${image.ow_i}x${image.oh_i}`}</p>
-                            <p><strong>Creation Date:</strong> {formatDate(image.createDate_dt)}</p>
-                            <p><strong>Modification Date:</strong> {formatDate(image.harvestDate_dt)}</p>
-                            <p><strong>Format:</strong> {image.format_str}</p>
-                        </div>
-                    </div>
-                ))}
-            </div>
+                    ))}
+                </div>
+            ) : (
+                <div className="no-data-message">Nincs adat</div>
+            )}
         </div >
     );
 }
